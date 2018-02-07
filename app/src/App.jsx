@@ -7,7 +7,7 @@ import TimeHabit from './components/Habit/TimeHabit.jsx'
 import Recorder from './components/Recorder/Recorder.jsx'
 import { read, save, append } from './utils/parser'
 
-import {} from './styles/global.css'
+import { } from './styles/global.css'
 
 class Habit {
   constructor() {
@@ -60,16 +60,6 @@ export default class App extends Component {
                 habit.trigger_type === 'time' ? (
                   <TimeHabit
                     key={habit.id}
-                    handleUpdate={this.handlerUpdate}
-                    habit={habit}
-                    avatarBackground={color({
-                      hue: '#54B6EE'
-                    }).replace('#', '')}
-                    avatarColor="ffffff"
-                  />
-                ) : (
-                  <SkillHabit
-                    key={habit.id}
                     handleUpdate={this.handleUpdate}
                     habit={habit}
                     avatarBackground={color({
@@ -77,7 +67,17 @@ export default class App extends Component {
                     }).replace('#', '')}
                     avatarColor="ffffff"
                   />
-                )
+                ) : (
+                    <SkillHabit
+                      key={habit.id}
+                      handleUpdate={this.handleUpdate}
+                      habit={habit}
+                      avatarBackground={color({
+                        hue: '#54B6EE'
+                      }).replace('#', '')}
+                      avatarColor="ffffff"
+                    />
+                  )
             )}
           </div>
         )}
