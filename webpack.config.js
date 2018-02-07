@@ -6,7 +6,7 @@ module.exports = {
   target: 'electron',
   entry: './app/src/entry.js',
   output: {
-    path: path.resolve(__dirname, '/app/build'),
+    path: path.join(__dirname, '/app/build'),
     publicPath: 'build/',
     filename: 'bundle.js'
   },
