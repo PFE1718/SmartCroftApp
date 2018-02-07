@@ -55,7 +55,7 @@ export default class App extends Component {
         <Menu handleSave={() => this.handleSave()} setStep={this.setStep} />
         {this.state.step === 0 && (
           <div className="habits">
-            {this.state.habits.filter(habit => !habit.user_choice).map(
+            {this.state.habits.filter(habit => habit.user_choice).map(
               habit =>
                 habit.trigger_type === 'time' ? (
                   <TimeHabit
