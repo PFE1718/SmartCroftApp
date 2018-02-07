@@ -45,6 +45,14 @@ export default class App extends Component {
     })
   }
 
+  handleEnable = id => {
+    this.setState({
+      habits: this.state.habits.map(
+        habit => (habit.id === id ? { ...habit, automatized: 1 } : habit)
+      )
+    })
+  }
+
   handleSave = () => {
     return save(this.state.habits)
   }
@@ -55,12 +63,13 @@ export default class App extends Component {
         <Menu handleSave={() => this.handleSave()} setStep={this.setStep} />
         {this.state.step === 0 && (
           <div className="habits">
-            {this.state.habits.map(
+            {this.state.habits.filter(habit => !habit.user_choice).map(
               habit =>
                 habit.trigger_type === 'time' ? (
                   <TimeHabit
                     key={habit.id}
                     handleRemove={this.handleRemove}
+                    handleEnable={this.handleEnable}
                     habit={habit}
                     avatarBackground={color({
                       hue: '#54B6EE'
@@ -71,6 +80,7 @@ export default class App extends Component {
                   <SkillHabit
                     key={habit.id}
                     handleRemove={this.handleRemove}
+                    handleEnable={this.handleEnable}
                     habit={habit}
                     avatarBackground={color({
                       hue: '#54B6EE'

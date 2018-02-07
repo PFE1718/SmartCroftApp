@@ -64,13 +64,23 @@ export default class SkillHabit extends Component {
             </ul>
           </CardText>
           <CardActions>
-            <FlatButton
-              label="Disable"
-              labelStyle={{ color: 'white' }}
-              fullWidth={true}
-              backgroundColor="#54B6EE"
-              onClick={() => this.props.handleRemove(this.props.habit.id)}
-            />
+            {this.props.habit.automatized ? (
+              <FlatButton
+                label="Disable"
+                labelStyle={{ color: 'white' }}
+                fullWidth={true}
+                backgroundColor="#54B6EE"
+                onClick={() => this.props.handleRemove(this.props.habit.id)}
+              />
+            ) : (
+              <FlatButton
+                label="Enable"
+                labelStyle={{ color: 'white' }}
+                fullWidth={true}
+                backgroundColor="#54B6EE"
+                onClick={() => this.props.handleEnable(this.props.habit.id)}
+              />
+            )}
           </CardActions>
         </Card>
       </MuiThemeProvider>
