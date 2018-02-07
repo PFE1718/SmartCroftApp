@@ -26,10 +26,7 @@ export default class SkillHabit extends Component {
     )
     return (
       <MuiThemeProvider>
-        <Card
-          expanded={this.state.expanded}
-          onExpandChange={this.handleExpandChange}
-        >
+        <Card expanded={this.state.expanded}>
           <CardHeader
             title={`Triggered by ${defaultTo(triggerName, 'a skill')}`}
             subtitle="Trigger habit"
@@ -63,22 +60,32 @@ export default class SkillHabit extends Component {
               ))}
             </ul>
           </CardText>
-          <CardActions>
-            {this.props.habit.automatized ? (
+          <CardActions style={{ textAlign: 'center' }}>
+            {this.props.habit.automatized !== 0 && (
               <FlatButton
-                label="Disable"
+                label="Off"
                 labelStyle={{ color: 'white' }}
-                fullWidth={true}
+                style={{ width: '40%' }}
                 backgroundColor="#54B6EE"
-                onClick={() => this.props.handleRemove(this.props.habit.id)}
+                onClick={() => this.props.handleUpdate(this.props.habit.id, 0)}
               />
-            ) : (
+            )}
+            {this.props.habit.automatized !== 1 && (
               <FlatButton
-                label="Enable"
+                label="Auto"
+                style={{ width: '40%' }}
                 labelStyle={{ color: 'white' }}
-                fullWidth={true}
                 backgroundColor="#54B6EE"
-                onClick={() => this.props.handleEnable(this.props.habit.id)}
+                onClick={() => this.props.handleUpdate(this.props.habit.id, 1)}
+              />
+            )}
+            {this.props.habit.automatized !== 2 && (
+              <FlatButton
+                label="Confirm"
+                style={{ width: '40%' }}
+                labelStyle={{ color: 'white' }}
+                backgroundColor="#54B6EE"
+                onClick={() => this.props.handleUpdate(this.props.habit.id, 2)}
               />
             )}
           </CardActions>

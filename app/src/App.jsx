@@ -37,18 +37,10 @@ export default class App extends Component {
     })
   }
 
-  handleRemove = id => {
+  handleUpdate = (id, status) => {
     this.setState({
       habits: this.state.habits.map(
-        habit => (habit.id === id ? { ...habit, automatized: 0 } : habit)
-      )
-    })
-  }
-
-  handleEnable = id => {
-    this.setState({
-      habits: this.state.habits.map(
-        habit => (habit.id === id ? { ...habit, automatized: 1 } : habit)
+        habit => (habit.id === id ? { ...habit, automatized: status } : habit)
       )
     })
   }
@@ -68,8 +60,7 @@ export default class App extends Component {
                 habit.trigger_type === 'time' ? (
                   <TimeHabit
                     key={habit.id}
-                    handleRemove={this.handleRemove}
-                    handleEnable={this.handleEnable}
+                    handleUpdate={this.handlerUpdate}
                     habit={habit}
                     avatarBackground={color({
                       hue: '#54B6EE'
@@ -79,8 +70,7 @@ export default class App extends Component {
                 ) : (
                   <SkillHabit
                     key={habit.id}
-                    handleRemove={this.handleRemove}
-                    handleEnable={this.handleEnable}
+                    handleUpdate={this.handleUpdate}
                     habit={habit}
                     avatarBackground={color({
                       hue: '#54B6EE'
