@@ -5,9 +5,9 @@ import json from 'jsonfile'
 import fs from 'fs'
 import Events from 'events'
 
-const dictionnaryPath = '/opt/mycroft/skills/dictionnary.json'
-const habitsPath = '/opt/mycroft/skills/habits.json'
-const logsPath = '/opt/mycroft/skills/logs.json'
+const dictionnaryPath = `${process.env['HOME']}/.mycroft/skills/ListenerSkill/habits/dictionnary.json`
+const habitsPath = `${process.env['HOME']}/.mycroft/skills/ListenerSkill/habits/habits.json`
+const logsPath = `${process.env['HOME']}/.mycroft/skills/ListenerSkill/habits/logs.json`
 
 export function save(habits) {
   return json.writeFileSync(
