@@ -1,0 +1,45 @@
+/*
+ * Global CSS goes here
+ */
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  height: 100%;
+  margin: auto;
+  background-color: white;
+}
+
+#app {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+}
+
+#app p {
+  text-align: justify;
+}
+
+.habits {
+  padding-top: 50px;
+}
+
+.habits > * {
+  background-color: #ebeff4;
+}
+
+.recorder {
+  height: 100%;
+  padding-top: 50px;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
